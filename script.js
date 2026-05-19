@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // High-Res Definition Matrix Output Mapping
+    // Portrait High-Definition Dimensions Lock
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -34,7 +34,7 @@
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Draw Clean Canvas White Underlay Base
+        // 1. Draw Clean Canvas Backing Base
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -57,7 +57,7 @@
             ctx.restore();
         }
 
-        // 3. Render Transparency PNG Overlay Asset
+        // 3. Render Transparency Template Overlay
         if (frameImage.complete && frameImage.naturalWidth !== 0) {
             ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
