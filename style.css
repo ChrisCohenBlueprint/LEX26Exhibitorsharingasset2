@@ -1,10 +1,17 @@
 /* ==========================================================================
    1. FONTS & VARIABLES
-   ========================================================================= */
+   ========================================================================== */
 @font-face {
-    font-family: 'CustomSpeakerFont';
-    src: url('your-font-file.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'NeueHaasGrotesk';
+    src: url('NeueHaasDisplay-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NeueHaasGrotesk';
+    src: url('NeueHaasDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -22,7 +29,7 @@
 
 /* ==========================================================================
    2. GLOBAL STYLES & BACKGROUND
-   ========================================================================= */
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -76,7 +83,7 @@ body {
 
 /* ==========================================================================
    3. APP CONTAINER & HERO
-   ========================================================================= */
+   ========================================================================== */
 .app-container {
     position: relative;
     z-index: 1;
@@ -116,8 +123,8 @@ body {
 }
 
 /* ==========================================================================
-   4. LAYOUT & CARDS (PORTRAIT RATIO FIXED)
-   ========================================================================= */
+   4. LAYOUT & CARDS (PORTRAIT RATIO)
+   ========================================================================== */
 .editor-layout {
     display: grid;
     grid-template-columns: 1fr 360px;
@@ -148,7 +155,6 @@ body {
 
 .drop-zone {
     width: 100%;
-    /* Strict rendering boundary logic mapping back to 800x1000 canvas outputs */
     aspect-ratio: 800 / 1000; 
     position: relative;
     cursor: pointer;
@@ -166,18 +172,17 @@ body {
 
 canvas {
     width: 100% !important;
-    height: 100% !important; /* Force complete vertical aspect ratio sync to prevent container layout clipping */
+    height: 100% !important;
     display: block;
     position: relative;
     z-index: 5;
 }
 
 /* ==========================================================================
-   5. UPLOAD PLACEHOLDER OVERLAY (ADJUSTED HORIZONTALLY & VERTICALLY)
-   ========================================================================= */
+   5. UPLOAD PLACEHOLDER OVERLAY
+   ========================================================================== */
 .placeholder {
     position: absolute;
-    /* Centers the placeholder content over the new vertical circle positioning metrics */
     top: 62%; 
     left: 50%;
     transform: translate(-50%, -50%);
@@ -190,7 +195,7 @@ canvas {
     z-index: 10;
     transition: opacity 0.2s ease;
     text-align: center;
-    pointer-events: none; /* Allows click-through interaction processing to reach dropzone trigger layers */
+    pointer-events: none;
 }
 
 .upload-icon {
@@ -219,7 +224,7 @@ canvas {
 
 /* ==========================================================================
    6. CONTROLS PANEL & FORM INPUTS
-   ========================================================================= */
+   ========================================================================== */
 .controls-panel {
     padding: 2rem;
     display: flex;
@@ -320,7 +325,7 @@ input[type="range"]:not(:disabled)::-webkit-slider-thumb:hover {
 
 /* ==========================================================================
    7. BUTTONS & UI ACTIONS
-   ========================================================================= */
+   ========================================================================== */
 .actions {
     display: flex;
     flex-direction: column;
@@ -400,7 +405,7 @@ input[type="range"]:not(:disabled)::-webkit-slider-thumb:hover {
 
 /* ==========================================================================
    8. FOOTER METRICS
-   ========================================================================= */
+   ========================================================================== */
 .legal-footer {
     font-size: 0.75rem;
     color: var(--text-muted);
