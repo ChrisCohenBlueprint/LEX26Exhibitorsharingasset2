@@ -82,7 +82,7 @@ body {
 }
 
 /* ==========================================================================
-   3. APP CONTAINER & HERO (LOGO EXPANSION & ROW ALIGNMENT)
+   3. APP CONTAINER & HERO (LOGO FIXED SIZING MATRIX)
    ========================================================================== */
 .app-container {
     position: relative;
@@ -93,34 +93,24 @@ body {
 }
 
 .hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     margin-bottom: 2rem;
-    gap: 0.5rem;
-}
-
-.logo-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px; /* Clean tracking space between expanded logo and heading */
 }
 
 .hero-logo {
-    height: 55px; /* Scaled up from tiny square box restrictions to be clearly visible */
-    width: auto;
-    object-fit: contain;
     display: block;
+    width: 220px !important; /* Locked explicit width to prevent width-collapsing loops */
+    height: auto !important; /* Preserves natural, undistorted vertical aspect ratio */
+    margin: 0 auto 1.25rem auto; /* Centers the image cleanly with bottom buffer spacing */
 }
 
 .logo-text {
     font-family: 'Outfit', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
 }
 
 .logo-text span {
@@ -133,7 +123,6 @@ body {
     font-size: 1.05rem;
     color: var(--text-muted);
     font-weight: 400;
-    margin-top: 0.25rem;
 }
 
 /* ==========================================================================
