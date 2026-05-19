@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNA Asset Sharing - Create Your Badge</title>
+    <meta name="description" content="Personalize your 'I'm Attending' badge for LNA North America 2026.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="hero-section">
+            <img src="logo-icon.png" class="hero-logo" alt="Logo">
+            <h1 class="logo-text">Lubricant Expo <span>North America</span></h1>
+            <p class="subtitle">Create your personalized "I'm Attending" badge</p>
+        </header>
+
+        <section class="editor-layout">
+            <div class="preview-card glass">
+                <div id="drop-zone" class="drop-zone">
+                    <div class="canvas-wrapper">
+                        <canvas id="editor-canvas"></canvas>
+                        <div id="placeholder" class="placeholder">
+                            <div class="upload-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                            </div>
+                            <h3>Upload<br>Photo</h3>
+                            <p>or drag & drop</p>
+                            <input type="file" id="file-input" accept="image/*" hidden>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="controls-panel glass">
+                <div class="control-group">
+                    <label>Positioning & Scale</label>
+                    <div class="slider-container">
+                        <span>Zoom</span>
+                        <input type="range" id="zoom-slider" min="0.1" max="3" step="0.01" value="1" disabled>
+                    </div>
+                    <p class="hint">You can also drag the photo to reposition it</p>
+                </div>
+
+                <div class="actions">
+                    <button id="download-btn" class="btn btn-primary" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Badge
+                    </button>
+                    <div class="share-group">
+                        <button id="linkedin-btn" class="btn btn-linkedin" disabled>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            LinkedIn
+                        </button>
+                        <button id="email-btn" class="btn btn-email" disabled>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Email
+                        </button>
+                    </div>
+                    <button id="reset-btn" class="btn btn-secondary">Reset</button>
+
+                    <div class="join-us-section">
+                        <p class="join-us-text">Don't have time to upload your own image? Don't worry.</p>
+                        <button id="join-us-btn" class="btn btn-secondary btn-join-us">
+                            Share "Join Us" Image
+                        </button>
+                    </div>
+                </div>
+
+                <footer class="legal-footer">
+                    <p>&copy; 2026 Lubricant Expo & The Bearing Show North America</p>
+                </footer>
+            </aside>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
