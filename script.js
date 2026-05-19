@@ -36,6 +36,10 @@
     companyInput.oninput = () => render();
 
     function render() {
+        // ALWAYS start the frame layout with a fresh structural state reset
+        ctx.restore(); 
+        ctx.save();
+        
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         // 1. Draw Clean Canvas White Underlay Base
@@ -58,7 +62,7 @@
             const dh = userImage.height * userImgScale;
             
             ctx.drawImage(userImage, circleX + userImgX - dw / 2, circleY + userImgY - dh / 2, dw, dh);
-            ctx.restore();
+            ctx.restore(); // Clears out the image mask clipping limits safely
         }
 
         // 3. Render Overlay Frame Template
@@ -70,8 +74,6 @@
         let regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
         const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
 
-        // CRITICAL UX FIX: If the regular text has content and does NOT end with a space, 
-        // automatically append a space so it never squishes into the bold company name.
         if (regularText.length > 0 && !regularText.endsWith(' ')) {
             regularText = regularText + ' ';
         }
@@ -135,7 +137,7 @@
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
         startX = (e.clientX - rect.left) * scaleX - userImgX;
-        startY = (e.clientY - rect.top) * scaleY - startY;
+        startY = (e.clientY - rect.top) * scaleY - userImgY;
     };
 
     window.onmousemove = (e) => {
