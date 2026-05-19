@@ -12,11 +12,9 @@
     const linkedinBtn = document.getElementById('linkedin-btn');
     const emailBtn = document.getElementById('email-btn');
     const resetBtn = document.getElementById('reset-btn');
-    const joinUsBtn = document.getElementById('join-us-btn');
     const placeholder = document.getElementById('placeholder');
 
     const FRAME_PATH = 'frame.png'; 
-    const GENERIC_PATH = 'generic-frame.png';
 
     let frameImage = new Image();
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
@@ -67,7 +65,6 @@
         }
 
         // 4. Draw Custom Inline Strings Dynamic Layout
-        // Clean generic setup string defaults instead of hardcoded sample names
         const regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
         const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
 
@@ -169,11 +166,4 @@
     };
     
     resetBtn.onclick = (e) => { e.stopPropagation(); location.reload(); };
-    joinUsBtn.onclick = (e) => { 
-        e.stopPropagation();
-        const link = document.createElement('a'); 
-        link.download = 'join-us.png'; 
-        link.href = GENERIC_PATH; 
-        link.click(); 
-    };
 })();
