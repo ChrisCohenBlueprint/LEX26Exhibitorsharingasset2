@@ -1,0 +1,1 @@
+# LEX26speakersharingasset
