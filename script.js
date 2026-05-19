@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Aspect Ratio High-Res Target Dimensions
+    // High-Res Definition Matrix Output Mapping
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -28,22 +28,20 @@
     frameImage.src = FRAME_PATH;
     frameImage.onload = () => render();
 
-    // Force context re-render as users update details
     nameInput.oninput = () => render();
     companyInput.oninput = () => render();
 
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Clear Frame Canvas Backing
+        // 1. Draw Clean Canvas White Underlay Base
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // 2. Map user avatar graphics layer
+        // 2. Map Profile Avatar Masking Window Hole
         if (userImage) {
             ctx.save();
             
-            // Alignments relative to portrait frame window cutout metrics
             const circleX = 400; 
             const circleY = 620; 
             const radius = 265;  
@@ -59,23 +57,23 @@
             ctx.restore();
         }
 
-        // 3. Render Template Layer Overlay
+        // 3. Render Transparency PNG Overlay Asset
         if (frameImage.complete && frameImage.naturalWidth !== 0) {
             ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
 
-        // 4. Render Dynamic Inline Text Typography
+        // 4. Render Dynamic Inline Bottom Line Strings
         const regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
         const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
 
         const fontSize = "24px";
         const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
 
-        // Weight 300 points to NeueHaasDisplay-Light
+        // Light Text Fragment (Weight 300)
         ctx.font = `300 ${fontSize} ${fontName}`;
         const regularWidth = ctx.measureText(regularText).width;
 
-        // Weight 500 points to NeueHaasDisplay-Medium
+        // Medium Text Fragment (Weight 500)
         ctx.font = `500 ${fontSize} ${fontName}`;
         const boldWidth = ctx.measureText(boldText).width;
 
@@ -84,20 +82,17 @@
         let currentX = (canvas.width - totalWidth) / 2;
         const textBaselineY = 910; 
 
-        // Light Text Fragment
         ctx.fillStyle = "#ffffff";
         ctx.font = `300 ${fontSize} ${fontName}`;
         ctx.textBaseline = "middle";
         ctx.textAlign = "left";
         ctx.fillText(regularText, currentX, textBaselineY);
 
-        // Medium Text Fragment
         currentX += regularWidth;
         ctx.font = `500 ${fontSize} ${fontName}`;
         ctx.fillText(boldText, currentX, textBaselineY);
     }
 
-    // Capture Interaction Triggers
     document.getElementById('drop-zone').onclick = (e) => {
         if(e.target.tagName !== 'INPUT') fileInput.click();
     };
@@ -109,8 +104,6 @@
             const img = new Image();
             img.onload = () => {
                 userImage = img;
-                
-                // Scale factor calculation ensuring clean initial 100% fitting values
                 userImgScale = 530 / Math.min(img.width, img.height);
                 zoomSlider.value = userImgScale;
                 userImgX = 0; 
@@ -125,7 +118,6 @@
         reader.readAsDataURL(e.target.files[0]);
     };
 
-    // Tracking dragging processing logic
     canvas.onmousedown = (e) => {
         if (!userImage) return; 
         isDragging = true;
