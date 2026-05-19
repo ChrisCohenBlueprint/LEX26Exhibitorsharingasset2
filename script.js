@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Resolution
+    // Portrait Aspect Ratio Outputs Mapping Standard 800x1000 High-Res Resolution
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -43,10 +43,10 @@
         if (userImage) {
             ctx.save();
             
-            // Adjusted viewport coordinates for vertical template circular hole
-            const circleX = 400; // Center horizontally
-            const circleY = 620; // Lower placement center
-            const radius = 265;  // Frame viewport match radius
+            // Core Alignment Coordinates matching your vertical frame circular opening perfectly
+            const circleX = 400; // Centered Horizontally
+            const circleY = 620; // Lower third vertical center
+            const radius = 265;  // Explicit masking radius
             
             ctx.beginPath(); 
             ctx.arc(circleX, circleY, radius, 0, Math.PI * 2); 
@@ -80,7 +80,7 @@
         const totalWidth = regularWidth + boldWidth;
         
         let currentX = (canvas.width - totalWidth) / 2;
-        const textBaselineY = 910; 
+        const textBaselineY = 910; // Sitting perfectly above bottom edge boundary limitations
 
         // Render part 1: Light string segment
         ctx.fillStyle = "#ffffff";
@@ -107,6 +107,8 @@
             const img = new Image();
             img.onload = () => {
                 userImage = img;
+                
+                // Calculates perfect 100% boundary framing fitment scales dynamically on initialization
                 userImgScale = 530 / Math.min(img.width, img.height);
                 zoomSlider.value = userImgScale;
                 userImgX = 0; 
