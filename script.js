@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait High-Definition Dimensions Lock
+    // Portrait Aspect Ratio Resolution Config
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -57,7 +57,7 @@
             ctx.restore();
         }
 
-        // 3. Render Transparency Template Overlay
+        // 3. Render Overlay Frame Template
         if (frameImage.complete && frameImage.naturalWidth !== 0) {
             ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
@@ -149,23 +149,16 @@
         link.click();
     };
     
-    // CUSTOM LINKEDIN COPIER FUNCTIONALITY
     linkedinBtn.onclick = (e) => { 
         e.stopPropagation();
-        
-        // 1. Download the image asset cleanly first
         downloadBtn.click(); 
         
-        // 2. Define the exact text snippet to copy to their clipboard
         const shareText = `So excited for #lubricantexpoeurope 2026 - taking place September 15 - 17 \n\nRegister for free here: https://register.visitcloud.com/survey/3dkj7ikw2zeed?actioncode=000096DOC \n\n5000+ Attendees\n320+ Exhibitors\n100+ Speakers\nAll brought to you over 3 days at Lubricant Expo Europe, Düsseldorf, Germany\n\nSee you there!`;
         
-        // 3. Write data to system clipboard securely
         navigator.clipboard.writeText(shareText).then(() => {
             alert("Speaker text copied to clipboard! Just upload your badge and paste (Ctrl+V or Cmd+V) your text description on LinkedIn.");
-            // 4. Fire open target environment
             window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
         }).catch(err => {
-            // Failback system option if browser blocks permissions
             window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
         });
     };
@@ -174,7 +167,6 @@
         e.stopPropagation();
         downloadBtn.click(); 
         
-        // Pre-populates text fields directly inside custom email drafts perfectly!
         const emailBody = `So excited for #lubricantexpoeurope 2026 - taking place September 15 - 17 \n\nRegister for free here: https://register.visitcloud.com/survey/3dkj7ikw2zeed?actioncode=000096DOC \n\n5000+ Attendees\n320+ Exhibitors\n100+ Speakers\nAll brought to you over 3 days at Lubricant Expo Europe, Düsseldorf, Germany\n\nSee you there!`;
         window.location.href = `mailto:?subject=I'm speaking at Lubricant Expo Europe 2026!&body=${encodeURIComponent(emailBody)}`; 
     };
