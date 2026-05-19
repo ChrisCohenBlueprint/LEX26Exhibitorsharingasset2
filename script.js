@@ -66,9 +66,15 @@
             ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
 
-        // 4. Render Dynamic Inline Bottom Line Strings
-        const regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
+        // 4. Render Dynamic Inline Bottom Line Strings with Auto-Spacing
+        let regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
         const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
+
+        // CRITICAL UX FIX: If the regular text has content and does NOT end with a space, 
+        // automatically append a space so it never squishes into the bold company name.
+        if (regularText.length > 0 && !regularText.endsWith(' ')) {
+            regularText = regularText + ' ';
+        }
 
         const fontSize = "24px";
         const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
@@ -153,29 +159,21 @@
         link.click();
     };
     
-    // PREMIUM REWRITTEN MODAL TRIGGER EVENT
     linkedinBtn.onclick = (e) => { 
         e.stopPropagation();
-        
-        // 1. Download badge cleanly first
         downloadBtn.click(); 
         
         const shareText = `So excited for #lubricantexpoeurope 2026 - taking place September 15 - 17 \n\nRegister for free here: https://register.visitcloud.com/survey/3dkj7ikw2zeed?actioncode=000096DOC \n\n5000+ Attendees\n320+ Exhibitors\n100+ Speakers\nAll brought to you over 3 days at Lubricant Expo Europe, Düsseldorf, Germany\n\nSee you there!`;
         
-        // 2. Force copy string background tracks
         navigator.clipboard.writeText(shareText).then(() => {
-            // 3. Instead of simple alert(), trigger the high-fidelity modal view panel seamlessly
             customModal.classList.add('active');
         }).catch(err => {
-            // Fallback routing tracking bounds
             window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
         });
     };
 
-    // Modal Confirmation Router click handler
     modalCloseBtn.onclick = () => {
         customModal.classList.remove('active');
-        // 4. Fires open LinkedIn environment only when they accept custom instructions tracking loops
         window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
     };
     
