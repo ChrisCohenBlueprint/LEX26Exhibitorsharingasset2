@@ -14,13 +14,17 @@
     const resetBtn = document.getElementById('reset-btn');
     const placeholder = document.getElementById('placeholder');
 
+    // Modal UI Elements
+    const customModal = document.getElementById('custom-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
     const FRAME_PATH = 'frame.png'; 
 
     let frameImage = new Image();
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Aspect Ratio Resolution Configuration Matrix Lock
+    // Portrait HD Canvas Resolution standard
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -69,11 +73,11 @@
         const fontSize = "24px";
         const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
 
-        // Light Text Fragment (Weight 300 mapping dynamically to NeueHaasDisplay-Light)
+        // Light Text Fragment (Weight 300)
         ctx.font = `300 ${fontSize} ${fontName}`;
         const regularWidth = ctx.measureText(regularText).width;
 
-        // Medium Text Fragment (Weight 500 mapping dynamically to NeueHaasDisplay-Medium)
+        // Medium Text Fragment (Weight 500)
         ctx.font = `500 ${fontSize} ${fontName}`;
         const boldWidth = ctx.measureText(boldText).width;
 
@@ -149,18 +153,30 @@
         link.click();
     };
     
+    // PREMIUM REWRITTEN MODAL TRIGGER EVENT
     linkedinBtn.onclick = (e) => { 
         e.stopPropagation();
+        
+        // 1. Download badge cleanly first
         downloadBtn.click(); 
         
         const shareText = `So excited for #lubricantexpoeurope 2026 - taking place September 15 - 17 \n\nRegister for free here: https://register.visitcloud.com/survey/3dkj7ikw2zeed?actioncode=000096DOC \n\n5000+ Attendees\n320+ Exhibitors\n100+ Speakers\nAll brought to you over 3 days at Lubricant Expo Europe, Düsseldorf, Germany\n\nSee you there!`;
         
+        // 2. Force copy string background tracks
         navigator.clipboard.writeText(shareText).then(() => {
-            alert("Speaker text copied to clipboard! Just upload your badge and paste (Ctrl+V or Cmd+V) your text description on LinkedIn.");
-            window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
+            // 3. Instead of simple alert(), trigger the high-fidelity modal view panel seamlessly
+            customModal.classList.add('active');
         }).catch(err => {
+            // Fallback routing tracking bounds
             window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
         });
+    };
+
+    // Modal Confirmation Router click handler
+    modalCloseBtn.onclick = () => {
+        customModal.classList.remove('active');
+        // 4. Fires open LinkedIn environment only when they accept custom instructions tracking loops
+        window.open('https://www.linkedin.com/feed/?shareActive=true', '_blank'); 
     };
     
     emailBtn.onclick = (e) => { 
