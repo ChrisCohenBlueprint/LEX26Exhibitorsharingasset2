@@ -116,7 +116,7 @@ body {
 }
 
 /* ==========================================================================
-   4. LAYOUT & CARDS (PORTRAIT RATIO)
+   4. LAYOUT & CARDS (PORTRAIT RATIO FIXED)
    ========================================================================= */
 .editor-layout {
     display: grid;
@@ -148,6 +148,7 @@ body {
 
 .drop-zone {
     width: 100%;
+    /* Strict rendering boundary logic mapping back to 800x1000 canvas outputs */
     aspect-ratio: 800 / 1000; 
     position: relative;
     cursor: pointer;
@@ -165,51 +166,55 @@ body {
 
 canvas {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important; /* Force complete vertical aspect ratio sync to prevent container layout clipping */
     display: block;
     position: relative;
     z-index: 5;
 }
 
 /* ==========================================================================
-   5. UPLOAD PLACEHOLDER OVERLAY
+   5. UPLOAD PLACEHOLDER OVERLAY (ADJUSTED HORIZONTALLY & VERTICALLY)
    ========================================================================= */
 .placeholder {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* Centers the placeholder content over the new vertical circle positioning metrics */
+    top: 62%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 10;
-    background: rgba(10, 12, 16, 0.6);
     transition: opacity 0.2s ease;
     text-align: center;
-    padding: 2rem;
+    pointer-events: none; /* Allows click-through interaction processing to reach dropzone trigger layers */
 }
 
 .upload-icon {
-    background: rgba(255, 255, 255, 0.08);
+    background: #0099da;
     padding: 1rem;
     border-radius: 50%;
-    margin-bottom: 1rem;
-    color: var(--primary);
-    border: 1px solid var(--glass-border);
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 153, 218, 0.4);
+    pointer-events: auto;
 }
 
 .placeholder h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #ffffff;
+    line-height: 1.2;
 }
 
 .placeholder p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* ==========================================================================
