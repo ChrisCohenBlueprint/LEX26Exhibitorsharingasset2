@@ -49,6 +49,16 @@
 
             <aside class="controls-panel glass">
                 <div class="control-group">
+                    <label>Speaker Details</label>
+                    <div class="input-container" style="margin-bottom: 12px;">
+                        <input type="text" id="name-input" class="text-field" placeholder="e.g. David Lawes, CEO," style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: white;">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="company-input" class="text-field" placeholder="e.g. Interchange 360" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: white;">
+                    </div>
+                </div>
+
+                <div class="control-group">
                     <label>Positioning & Scale</label>
                     <div class="slider-container">
                         <span>Zoom</span>
@@ -63,7 +73,7 @@
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                             <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
+                            <line x1="12" y1="3" x2="12" y2="3" />
                         </svg>
                         Download Badge
                     </button>
