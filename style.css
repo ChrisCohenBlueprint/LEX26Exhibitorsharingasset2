@@ -82,7 +82,7 @@ body {
 }
 
 /* ==========================================================================
-   3. APP CONTAINER & HERO (CLEAN STANDALONE LOGO PROPORTIONS)
+   3. APP CONTAINER & HERO (SPACING BUFFER FIXED)
    ========================================================================== */
 .app-container {
     position: relative;
@@ -99,15 +99,17 @@ body {
 
 .hero-logo {
     display: block;
-    width: 250px !important; /* Locks sharp layout size tracking across all screen bounds */
+    width: 250px !important;
     height: auto !important; 
-    margin: 0 auto 0.75rem auto; 
+    /* Changed bottom margin to 1.75rem to give the badge text perfect breathing room */
+    margin: 0 auto 1.75rem auto; 
 }
 
 .subtitle {
     font-size: 1.1rem;
     color: var(--text-muted);
     font-weight: 400;
+    letter-spacing: 0.01em;
 }
 
 /* ==========================================================================
