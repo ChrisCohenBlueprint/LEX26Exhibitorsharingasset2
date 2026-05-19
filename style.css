@@ -123,7 +123,7 @@ body {
 }
 
 /* ==========================================================================
-   4. LAYOUT & CARDS (FIXED PROPORTIONAL WRAPPERS)
+   4. LAYOUT & CARDS
    ========================================================================== */
 .editor-layout {
     display: grid;
@@ -155,11 +155,11 @@ body {
 
 .drop-zone {
     width: 100%;
-    max-width: 440px; /* Constrains display size perfectly inline with controls */
-    aspect-ratio: 800 / 1000; /* Strict un-distorted shape lock */
+    max-width: 440px; 
+    aspect-ratio: 800 / 1000; 
     position: relative;
     cursor: pointer;
-    border-radius: 16px; /* Rounded frame edges */
+    border-radius: 16px; 
     overflow: hidden;
     background: #0d1117;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -169,27 +169,29 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 canvas {
     width: 100% !important;
-    height: auto !important; /* Proportional auto-scaling */
+    height: auto !important; 
     display: block;
     position: relative;
     z-index: 5;
-    border-radius: 16px; /* Rounded frame fallback */
+    border-radius: 16px; 
 }
 
 /* ==========================================================================
-   5. UPLOAD PLACEHOLDER OVERLAY
+   5. UPLOAD PLACEHOLDER OVERLAY (FIXED TEXT VISIBILITY)
    ========================================================================== */
 .placeholder {
     position: absolute;
     top: 62%; 
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
+    width: 200px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -198,13 +200,20 @@ canvas {
     transition: opacity 0.2s ease;
     text-align: center;
     pointer-events: none;
+    /* Dark rounded shield blocking out the frame's internal white glare */
+    background: rgba(10, 12, 16, 0.75); 
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 20px;
 }
 
 .upload-icon {
     background: #0099da;
-    padding: 1rem;
+    padding: 0.85rem;
     border-radius: 50%;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 153, 218, 0.4);
     pointer-events: auto;
@@ -212,16 +221,16 @@ canvas {
 
 .placeholder h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
-    color: #ffffff;
+    margin-bottom: 0.15rem;
+    color: #ffffff !important;
     line-height: 1.2;
 }
 
 .placeholder p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.8rem;
 }
 
 /* ==========================================================================
