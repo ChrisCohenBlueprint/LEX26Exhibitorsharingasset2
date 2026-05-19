@@ -102,7 +102,7 @@ body {
     width: 250px !important;
     height: auto !important; 
     /* Changed bottom margin to 1.75rem to give the badge text perfect breathing room */
-    margin: 0 auto 1.25rem auto; 
+    margin: 0 auto 1.75rem auto; 
 }
 
 .subtitle {
