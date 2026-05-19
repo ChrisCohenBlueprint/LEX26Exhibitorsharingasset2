@@ -82,7 +82,7 @@ body {
 }
 
 /* ==========================================================================
-   3. APP CONTAINER & HERO (SPACING BUFFER FIXED)
+   3. APP CONTAINER & HERO (LOGO HEIGHT FIX)
    ========================================================================== */
 .app-container {
     position: relative;
@@ -93,16 +93,20 @@ body {
 }
 
 .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    gap: 20px; 
 }
 
 .hero-logo {
     display: block;
-    width: 250px !important;
-    height: auto !important; 
-    /* Changed bottom margin to 1.75rem to give the badge text perfect breathing room */
-    margin: 0 auto 1.75rem auto; 
+    height: 60px !important; /* Fixed vertical boundary constraint forces it to display */
+    width: auto !important;  /* Bypasses width collapsing bugs completely */
+    object-fit: contain;
+    margin: 0 auto;
 }
 
 .subtitle {
@@ -110,6 +114,7 @@ body {
     color: var(--text-muted);
     font-weight: 400;
     letter-spacing: 0.01em;
+    line-height: 1.4;
 }
 
 /* ==========================================================================
