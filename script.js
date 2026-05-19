@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait High-Definition Dimensions Lock
+    // Portrait Aspect Ratio Resolution Config
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -34,7 +34,7 @@
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Draw Clean Canvas Backing Base
+        // 1. Draw Clean Canvas White Underlay Base
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -125,7 +125,7 @@
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
         startX = (e.clientX - rect.left) * scaleX - userImgX;
-        startY = (e.clientY - rect.top) * scaleY - userImgY;
+        startY = (e.clientY - rect.top) * scaleY - startY;
     };
 
     window.onmousemove = (e) => {
