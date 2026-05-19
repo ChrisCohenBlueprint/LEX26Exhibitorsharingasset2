@@ -82,7 +82,7 @@ body {
 }
 
 /* ==========================================================================
-   3. APP CONTAINER & HERO (LOGO FIXED SIZING MATRIX)
+   3. APP CONTAINER & HERO (CLEAN STANDALONE LOGO PROPORTIONS)
    ========================================================================== */
 .app-container {
     position: relative;
@@ -99,28 +99,13 @@ body {
 
 .hero-logo {
     display: block;
-    width: 220px !important; /* Locked explicit width to prevent width-collapsing loops */
-    height: auto !important; /* Preserves natural, undistorted vertical aspect ratio */
-    margin: 0 auto 1.25rem auto; /* Centers the image cleanly with bottom buffer spacing */
-}
-
-.logo-text {
-    font-family: 'Outfit', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
-}
-
-.logo-text span {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    width: 250px !important; /* Locks sharp layout size tracking across all screen bounds */
+    height: auto !important; 
+    margin: 0 auto 0.75rem auto; 
 }
 
 .subtitle {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
     font-weight: 400;
 }
