@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Aspect Ratio Outputs Mapping Standard 800x1000 High-Res Resolution
+    // Portrait Aspect Ratio High-Res Canvas Proportions
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -28,14 +28,14 @@
     frameImage.src = FRAME_PATH;
     frameImage.onload = () => render();
 
-    // Re-render instantly as users type details
+    // Re-render immediately on keystrokes
     nameInput.oninput = () => render();
     companyInput.oninput = () => render();
 
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Base clear canvas background
+        // 1. Draw Clean Canvas Background
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -43,10 +43,10 @@
         if (userImage) {
             ctx.save();
             
-            // Core Alignment Coordinates matching your vertical frame circular opening perfectly
-            const circleX = 400; // Centered Horizontally
-            const circleY = 620; // Lower third vertical center
-            const radius = 265;  // Explicit masking radius
+            // Layout metrics matching your template's frame perfectly
+            const circleX = 400; // Centered horizontally
+            const circleY = 620; // Correct portrait vertical depth
+            const radius = 265;  // Viewport radius
             
             ctx.beginPath(); 
             ctx.arc(circleX, circleY, radius, 0, Math.PI * 2); 
@@ -64,38 +64,41 @@
             ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
 
-        // 4. Draw Custom Inline Strings Dynamic Layout
+        // 4. Measure and Draw Dynamic Text Strings (Inline System)
         const regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
         const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
 
         const fontSize = "24px";
-        const fontName = "CustomSpeakerFont, 'Inter', sans-serif";
+        const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
 
+        // Weight 300 triggers NeueHaasDisplay-Light
         ctx.font = `300 ${fontSize} ${fontName}`;
         const regularWidth = ctx.measureText(regularText).width;
 
-        ctx.font = `700 ${fontSize} ${fontName}`;
+        // Weight 500 triggers NeueHaasDisplay-Medium
+        ctx.font = `500 ${fontSize} ${fontName}`;
         const boldWidth = ctx.measureText(boldText).width;
 
         const totalWidth = regularWidth + boldWidth;
         
+        // Center the combined elements perfectly as a single inline group
         let currentX = (canvas.width - totalWidth) / 2;
-        const textBaselineY = 910; // Sitting perfectly above bottom edge boundary limitations
+        const textBaselineY = 910; 
 
-        // Render part 1: Light string segment
+        // Render part 1: Light text tracking
         ctx.fillStyle = "#ffffff";
         ctx.font = `300 ${fontSize} ${fontName}`;
         ctx.textBaseline = "middle";
         ctx.textAlign = "left";
         ctx.fillText(regularText, currentX, textBaselineY);
 
-        // Render part 2: Bold inline text segment beside it
+        // Render part 2: Medium text tracking side-by-side
         currentX += regularWidth;
-        ctx.font = `700 ${fontSize} ${fontName}`;
+        ctx.font = `500 ${fontSize} ${fontName}`;
         ctx.fillText(boldText, currentX, textBaselineY);
     }
 
-    // Input handlers
+    // Input dropzone click-through events management
     document.getElementById('drop-zone').onclick = (e) => {
         if(e.target.tagName !== 'INPUT') fileInput.click();
     };
@@ -108,7 +111,7 @@
             img.onload = () => {
                 userImage = img;
                 
-                // Calculates perfect 100% boundary framing fitment scales dynamically on initialization
+                // Calculates crisp 100% scale framing on photo import
                 userImgScale = 530 / Math.min(img.width, img.height);
                 zoomSlider.value = userImgScale;
                 userImgX = 0; 
@@ -123,7 +126,7 @@
         reader.readAsDataURL(e.target.files[0]);
     };
 
-    // Tracking Interactions
+    // Tracking dragging coordinates processing
     canvas.onmousedown = (e) => {
         if (!userImage) return; 
         isDragging = true;
