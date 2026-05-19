@@ -20,7 +20,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Aspect Ratio Resolution Config
+    // Portrait Aspect Ratio Resolution Configuration Matrix Lock
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -69,11 +69,11 @@
         const fontSize = "24px";
         const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
 
-        // Light Text Fragment (Weight 300)
+        // Light Text Fragment (Weight 300 mapping dynamically to NeueHaasDisplay-Light)
         ctx.font = `300 ${fontSize} ${fontName}`;
         const regularWidth = ctx.measureText(regularText).width;
 
-        // Medium Text Fragment (Weight 500)
+        // Medium Text Fragment (Weight 500 mapping dynamically to NeueHaasDisplay-Medium)
         ctx.font = `500 ${fontSize} ${fontName}`;
         const boldWidth = ctx.measureText(boldText).width;
 
