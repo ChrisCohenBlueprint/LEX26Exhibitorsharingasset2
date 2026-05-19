@@ -15,7 +15,6 @@
     const joinUsBtn = document.getElementById('join-us-btn');
     const placeholder = document.getElementById('placeholder');
 
-    // Update with your new relative or GitHub file paths
     const FRAME_PATH = 'frame.png'; 
     const GENERIC_PATH = 'generic-frame.png';
 
@@ -23,7 +22,7 @@
     let userImage = null, userImgX = 0, userImgY = 0, userImgScale = 1;
     let isDragging = false, startX, startY;
 
-    // Portrait Aspect Ratio Resolution
+    // Portrait Resolution
     canvas.width = 800; 
     canvas.height = 1000;
 
@@ -31,14 +30,14 @@
     frameImage.src = FRAME_PATH;
     frameImage.onload = () => render();
 
-    // Event listeners to redraw layout instantly as user types text details
+    // Re-render instantly as users type details
     nameInput.oninput = () => render();
     companyInput.oninput = () => render();
 
     function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Base clean background
+        // 1. Base clear canvas background
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -46,10 +45,10 @@
         if (userImage) {
             ctx.save();
             
-            // Adjust coordinates to match your portrait frame circular opening
-            const circleX = 400; // Horizontally Centered
-            const circleY = 620; // Lower third vertical sweet spot 
-            const radius = 265; // Scale radius up matching high-res canvas specs
+            // Adjusted viewport coordinates for vertical template circular hole
+            const circleX = 400; // Center horizontally
+            const circleY = 620; // Lower placement center
+            const radius = 265;  // Frame viewport match radius
             
             ctx.beginPath(); 
             ctx.arc(circleX, circleY, radius, 0, Math.PI * 2); 
@@ -68,11 +67,11 @@
         }
 
         // 4. Draw Custom Inline Strings Dynamic Layout
-        const regularText = nameInput.value.trim() ? nameInput.value : "David Lawes, CEO, ";
-        const boldText = companyInput.value.trim() ? companyInput.value : "Interchange 360";
+        // Clean generic setup string defaults instead of hardcoded sample names
+        const regularText = nameInput.value.trim() ? nameInput.value : "Your Name, Title, ";
+        const boldText = companyInput.value.trim() ? companyInput.value : "Company Name";
 
-        // Use custom font family loaded inside your style sheets
-        const fontSize = "28px";
+        const fontSize = "24px";
         const fontName = "CustomSpeakerFont, 'Inter', sans-serif";
 
         ctx.font = `300 ${fontSize} ${fontName}`;
@@ -83,24 +82,23 @@
 
         const totalWidth = regularWidth + boldWidth;
         
-        // Calculate dynamic horizontal coordinate start point to center combination structure
         let currentX = (canvas.width - totalWidth) / 2;
-        const textBaselineY = 910; // Vertical coordinate tracking baseline position
+        const textBaselineY = 910; 
 
-        // Render segment 1: Regular/Light string
+        // Render part 1: Light string segment
         ctx.fillStyle = "#ffffff";
         ctx.font = `300 ${fontSize} ${fontName}`;
         ctx.textBaseline = "middle";
         ctx.textAlign = "left";
         ctx.fillText(regularText, currentX, textBaselineY);
 
-        // Render segment 2: Bold text side-by-side string offset
+        // Render part 2: Bold inline text segment beside it
         currentX += regularWidth;
         ctx.font = `700 ${fontSize} ${fontName}`;
         ctx.fillText(boldText, currentX, textBaselineY);
     }
 
-    // Photo input processing architecture handlers
+    // Input handlers
     document.getElementById('drop-zone').onclick = (e) => {
         if(e.target.tagName !== 'INPUT') fileInput.click();
     };
@@ -126,7 +124,7 @@
         reader.readAsDataURL(e.target.files[0]);
     };
 
-    // UI Tracking Mouse interactions 
+    // Tracking Interactions
     canvas.onmousedown = (e) => {
         if (!userImage) return; 
         isDragging = true;
