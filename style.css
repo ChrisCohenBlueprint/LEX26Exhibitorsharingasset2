@@ -182,8 +182,8 @@ canvas {
    ========================================================================== */
 .placeholder {
     position: absolute;
-    top: 37%; 
-    left: 78%;
+    top: 32%; 
+    left: 83%;
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
@@ -196,6 +196,10 @@ canvas {
     text-align: center;
     pointer-events: none;
     padding: 20px;
+}
+
+.drop-zone:hover .placeholder {
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 .upload-icon {

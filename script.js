@@ -51,8 +51,8 @@
             const dh = userImage.height * userImgScale;
             
             // Default center around the white area on the right
-            const imgCenterX = 798 + userImgX;
-            const imgCenterY = 198 + userImgY;
+            const imgCenterX = 850 + userImgX;
+            const imgCenterY = 171 + userImgY;
             
             ctx.drawImage(userImage, imgCenterX - dw / 2, imgCenterY - dh / 2, dw, dh);
             ctx.restore();
