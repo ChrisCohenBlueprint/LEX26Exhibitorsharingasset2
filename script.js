@@ -91,7 +91,7 @@
             const img = new Image();
             img.onload = () => {
                 userImage = img;
-                userImgScale = 530 / Math.min(img.width, img.height);
+                userImgScale = 280 / Math.max(img.width, img.height);
                 zoomSlider.value = userImgScale;
                 userImgX = 0; 
                 userImgY = 0;
