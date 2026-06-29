@@ -182,8 +182,8 @@ canvas {
    ========================================================================== */
 .placeholder {
     position: absolute;
-    top: 47%; 
-    left: 73%;
+    top: 37%; 
+    left: 78%;
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
