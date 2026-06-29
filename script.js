@@ -70,7 +70,7 @@
             const fontName = "'NeueHaasGrotesk', 'Inter', sans-serif";
             
             const textCenterX = 702;
-            const textBaselineY = 440; 
+            const textBaselineY = 425; 
 
             ctx.fillStyle = "#162842"; // Dark blue text color
             ctx.font = `800 ${fontSize} ${fontName}`;
