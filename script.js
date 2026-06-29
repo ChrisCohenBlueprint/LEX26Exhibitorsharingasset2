@@ -40,8 +40,8 @@
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Draw Clean Canvas White Underlay Base
-        ctx.fillStyle = "#ffffff"; 
+        // 1. Draw Clean Canvas Dark Underlay Base
+        ctx.fillStyle = "#0a0c10"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // 2. Render User Image Logo (free floating underlay)

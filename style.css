@@ -195,11 +195,6 @@ canvas {
     transition: opacity 0.2s ease;
     text-align: center;
     pointer-events: none;
-    background: rgba(10, 12, 16, 0.75); 
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     padding: 20px;
 }
 
