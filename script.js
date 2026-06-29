@@ -44,12 +44,7 @@
         ctx.fillStyle = "#ffffff"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // 2. Render Overlay Frame Template BEFORE User Image
-        if (frameImage.complete && frameImage.naturalWidth !== 0) {
-            ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
-        }
-
-        // 3. Render User Image Logo (free floating)
+        // 2. Render User Image Logo (free floating underlay)
         if (userImage) {
             ctx.save();
             const dw = userImage.width * userImgScale;
@@ -61,6 +56,11 @@
             
             ctx.drawImage(userImage, imgCenterX - dw / 2, imgCenterY - dh / 2, dw, dh);
             ctx.restore();
+        }
+
+        // 3. Render Overlay Frame Template ON TOP
+        if (frameImage.complete && frameImage.naturalWidth !== 0) {
+            ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
         }
 
         // 4. Render Stand Number Text
